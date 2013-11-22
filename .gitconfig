@@ -15,6 +15,8 @@
 	ca = !git add -A && git commit -av
 	# Switch to a branch, creating it if necessary
 	go = checkout -B
+	# Adds files to previous commit
+	oops = commit --amend –C HEAD
 	# Show verbose output about tags, branches or remotes
 	tags = tag -l
 	branches = branch -a
@@ -33,7 +35,7 @@
 	excludesfile = ~/.gitignore
 	attributesfile = ~/.gitattributes
 	# Treat spaces before tabs, lines that are indented with 8 or more spaces, and all kinds of trailing whitespace as an error
-	whitespace = space-before-tab,indent-with-non-tab,trailing-space
+	whitespace = space-before-tab,trailing-space
 
 [color]
 	# Use colors in Git commands that are capable of colored output when outputting to the terminal
