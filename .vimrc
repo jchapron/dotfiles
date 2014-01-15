@@ -38,6 +38,8 @@ set number
 syntax on
 " Highlight current line
 set cursorline
+" Make tabs be spaces
+set expandtab
 " Make tabs as wide as two spaces
 set tabstop=2
 " Show “invisible” characters
