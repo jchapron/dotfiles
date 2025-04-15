@@ -7,11 +7,15 @@ export LC_ALL="en_US.UTF-8"
 export EDITOR="nvim"
 export VISUAL="$EDITOR"
 export PAGER="less"
+export HISTFILE=$HOME/.zhistory
+export SAVEHIST=1000
+export HISTSIZE=999
 
 # -----------------------------
 # 🧪 Setup
 # -----------------------------
 
+eval "$(starship init zsh)"
 eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(zoxide init zsh)"
 eval "$(sheldon source)"
