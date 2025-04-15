@@ -30,6 +30,18 @@ cdf() {
 # 🧙‍♂️ Dev Flow Enhancers
 # -----------------------------
 
+# Fuzzy open file
+fe() {
+  local file
+  file=$(fzf --query="$1" --select-1 --exit-0)
+  [ -n "$file" ] && ${EDITOR:-nvim} "$file"
+}
+
+# Edit files with matches
+vrg() {
+  rg --files-with-matches "$1" "$2" | fzf -m --preview="bat --style=numbers --theme=ansi --color=always --line-range=:100 {}" | xargs nvim
+}
+
 # Edit chezmoi dotfiles
 dotedit() {
   chezmoi cd

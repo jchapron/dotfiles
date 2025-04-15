@@ -8,7 +8,6 @@ alias l='ls -lah'
 alias ll='ls -l'
 alias la='ls -A'
 alias lsd='ls -l | grep "^d"'  # List directories only
-alias z='zoxide'
 
 alias v='nvim'
 
@@ -20,4 +19,7 @@ alias fd='fd . | fzf'  # Requires `fd`
 alias g='git'
 
 alias update='brew update && brew upgrade && chezmoi update'
+alias bubu='brew bundle --file ~/Brewfile'
 alias ports='lsof -i -P -n | grep LISTEN'
+
+alias cursor='open -a "Cursor"'
