@@ -1,0 +1,69 @@
+[user]
+  email = development@jchapron.com
+  name = jchapron
+
+[push]
+  default = current
+
+[pull]
+  rebase = true
+
+[init]
+  defaultBranch = main
+
+[color]
+  ui = auto
+
+[alias]
+  st = status -sb
+  co = checkout
+  br = branch
+  cm = commit -m
+  ca = commit -a -m
+  aa = add -A
+  lg = log --oneline --graph --decorate --all
+  lga = log --graph --pretty=format:'%C(yellow)%h%Creset - %C(cyan)%an%Creset, %Cgreen%ar%Creset : %s' --all
+  d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+  di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
+  df = diff -w
+  dc = diff -w --staged
+  unstage = reset HEAD --
+  last = log -1 HEAD
+  amend = commit --amend
+  uncommit = reset --soft HEAD~1
+  root = rev-parse --show-toplevel
+  tags = tag -l
+  wipe = reset --hard && git clean -fd
+  today = log --stat --since='1 Day Ago' --graph --pretty=oneline --abbrev-commit --date=relative
+  amend = commit --amend --reuse-message=HEAD
+  tags = tag -l
+  branches = branch --all
+  remotes = remote --verbose
+  go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+
+[core]
+  # Use custom `.gitignore` and `.gitattributes`.
+  excludesfile = ~/.gitignore
+  attributesfile = ~/.gitattributes
+
+  # Treat spaces before tabs and all kinds of trailing whitespace as an error.
+  # [default] trailing-space: looks for spaces at the end of a line
+  # [default] space-before-tab: looks for spaces before tabs at the beginning of a line
+  whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+
+  # Make `git rebase` safer on macOS.
+  # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+  trustctime = false
+
+  # Prevent showing files whose names contain non-ASCII symbols as unversioned.
+  # http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
+  precomposeunicode = false
+
+  # Speed up commands involving untracked files such as `git status`.
+  # https://git-scm.com/docs/git-update-index#_untracked_cache
+  untrackedCache = true
+
+[help]
+  # Automatically correct and execute mistyped commands.
+  autocorrect = 1
+
