@@ -15,8 +15,8 @@ export HISTSIZE=999
 # 🧪 Setup
 # -----------------------------
 
-eval "$(starship init zsh)"
 eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 eval "$(sheldon source)"
 
