@@ -1,0 +1,46 @@
+{
+  "includeCoAuthoredBy": true,
+  "permissions": {
+    "allow": [
+      "Bash(git status*)",
+      "Bash(git diff*)",
+      "Bash(git log*)",
+      "Bash(git branch*)",
+      "Bash(ls*)",
+      "Bash(rg*)",
+      "Bash(fd*)",
+      "Bash(cat*)",
+      "Bash(pnpm test*)",
+      "Bash(npm test*)",
+      "Bash(npx tsc*)",
+      "Bash(npx vitest*)"
+    ]
+  },
+  "model": "fable[1m]",
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "terminal-notifier -title \"Claude Code\" -subtitle \"${PWD##*/}\" -message \"$(jq -r .message)\" -sound Pop -group \"claude-${PWD##*/}\" -activate com.mitchellh.ghostty"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "terminal-notifier -title \"Claude Code\" -subtitle \"${PWD##*/}\" -message \"Finished, waiting for you\" -sound Glass -group \"claude-${PWD##*/}\" -activate com.mitchellh.ghostty"
+          }
+        ]
+      }
+    ]
+  },
+  "effortLevel": "medium",
+  "theme": "auto"
+}

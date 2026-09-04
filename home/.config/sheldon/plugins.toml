@@ -1,0 +1,16 @@
+shell = "zsh"
+
+[plugins.zsh-completions]
+github = "zsh-users/zsh-completions"
+
+[plugins.zsh-autosuggestions]
+github = "zsh-users/zsh-autosuggestions"
+
+# Catppuccin colours for zsh-syntax-highlighting; must load before the plugin itself.
+[plugins.catppuccin-syntax-theme]
+github = "catppuccin/zsh-syntax-highlighting"
+use = ["themes/catppuccin_mocha-zsh-syntax-highlighting.zsh"]
+
+# Must be sourced last.
+[plugins.zsh-syntax-highlighting]
+github = "zsh-users/zsh-syntax-highlighting"

@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+# ThePrimeagen-style sessionizer: pick a project, get (or create) a tmux session named after it.
+# Usage: tmux-sessionizer [dir]   — with no arg, fzf over ~/code/*/* and git worktrees.
+set -euo pipefail
+
+if [[ $# -eq 1 ]]; then
+  selected=$1
+else
+  selected=$( {
+      find ~/code -mindepth 2 -maxdepth 2 -type d -not -name '.*'
+      find ~/code -mindepth 4 -maxdepth 5 -type d \( -path '*/.worktrees/*' -o -path '*/.claude/worktrees/*' \) -not -path '*/.git*'   # wt / claude -w
+      find ~/.cursor/worktrees -mindepth 2 -maxdepth 2 -type d 2>/dev/null                                                  # cursor agent -w
+    } 2>/dev/null | sed "s#^$HOME/#~/#" | fzf --prompt='session > ' --height 40% --layout=reverse --border=rounded ) || exit 0
+  selected="${selected/#\~/$HOME}"
+fi
+[[ -z "$selected" ]] && exit 0
+
+name=$(basename "$selected" | tr . _)
+# worktrees get "<repo>/<branch>" style names so they sort next to their repo
+if [[ "$selected" == */.worktrees/* ]]; then
+  repo=$(basename "${selected%/.worktrees/*}")
+  name="${repo}--${name}"
+elif [[ "$selected" == */.claude/worktrees/* ]]; then
+  repo=$(basename "${selected%/.claude/worktrees/*}")
+  name="${repo}--${name}"
+elif [[ "$selected" == "$HOME/.cursor/worktrees/"* ]]; then
+  repo=$(basename "$(dirname "$selected")")
+  name="${repo}--${name}"
+fi
+
+if ! tmux has-session -t="$name" 2>/dev/null; then
+  tmux new-session -ds "$name" -c "$selected"
+fi
+
+if [[ -z "${TMUX:-}" ]]; then
+  tmux attach -t "$name"
+else
+  tmux switch-client -t "$name"
+fi

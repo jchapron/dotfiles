@@ -1,0 +1,5 @@
+# work-specific / machine-local, never published
+home/.zsh/ssh.zsh
+home/.zsh/local.zsh
+home/.config/nvim/.luarc.json
+.DS_Store

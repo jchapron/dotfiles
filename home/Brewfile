@@ -1,0 +1,114 @@
+
+# ----------------------------------------
+brew "git"
+brew "git-delta"    # syntax-highlighted git diffs
+brew "stow"         # dotfiles symlinks
+brew "zsh"
+brew "tmux"
+brew "neovim"
+brew "tree-sitter-cli"   # parser builds for nvim-treesitter
+brew "fzf"
+brew "ripgrep"
+brew "bat"
+brew "htop"
+brew "tree"
+brew "jq"
+brew "watch"
+brew "fd"
+brew "sd"
+brew "duf"
+brew "dust"
+brew "bottom"
+brew "zoxide"
+brew "tokei"
+brew "procs"
+brew "libyaml"
+brew "sheldon"
+brew "libpq"
+brew "just"
+brew "duckdb"
+brew "bash"
+brew "mkcert"
+
+tap "databricks/tap"
+brew "databricks"
+
+# ----------------------------------------
+# Programming Languages & Version Managers
+# ----------------------------------------
+tap "oven-sh/bun"
+
+brew "mise"
+brew "node"
+brew "python3"
+brew "bun"
+brew "cubejs-cli"
+
+# ----------------------------------------
+# Databases
+# ----------------------------------------
+brew "postgresql@18"
+brew "redis"
+brew "sqlite"
+
+# ----------------------------------------
+# Web Dev Utilities
+# ----------------------------------------
+brew "httpie"
+brew "curl"
+brew "wget"
+brew "imagemagick"
+
+# ----------------------------------------
+# DevOps Utilities
+# ----------------------------------------
+brew "flux"
+brew "gnu-sed"
+brew "az"
+brew "kubectl"
+brew "k9s"
+brew "kubectx"
+tap "databricks/tap"
+
+# ----------------------------------------
+# Productivity
+# ----------------------------------------
+brew "gh"
+brew "mas"           # Mac App Store CLI
+brew "starship"
+brew "dockutil"        # scriptable Dock
+brew "defaultbrowser"  # set default browser from the CLI
+
+# ----------------------------------------
+# AI coding agents (Cursor's `agent` CLI installs via: curl -fsS https://cursor.com/install | bash)
+# ----------------------------------------
+cask "claude-code"          # `claude`
+brew "claude-squad"         # tmux + worktree manager for parallel agents (`cs`)
+brew "terminal-notifier"    # desktop notifications from agent hooks
+
+# ----------------------------------------
+# Cask Apps (GUI)
+# ----------------------------------------
+tap "nikitabobko/tap"
+cask "nikitabobko/tap/aerospace"   # tiling window manager
+tap "FelixKratz/formulae"
+brew "FelixKratz/formulae/borders"  # focused-window border for AeroSpace
+cask "iterm2"
+cask "ghostty"
+cask "orbstack"
+cask "figma"
+cask "raycast"
+cask "hiddenbar"         # menu bar item manager (Ice crashes on macOS 26)
+cask "slack"
+cask "superhuman"
+cask "chatgpt"
+cask "notion"
+cask "spotify"
+cask "whatsapp"
+cask "cursor"
+cask "dbeaver-community"
+
+# ----------------------------------------
+# Fonts
+# ----------------------------------------
+cask "font-geist-mono-nerd-font"

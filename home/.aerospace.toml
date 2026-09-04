@@ -1,0 +1,175 @@
+# AeroSpace — i3-style tiling for macOS. Docs: https://nikitabobko.github.io/AeroSpace/guide
+# alt-hjkl focus · alt-shift-hjkl move · alt-1..8 workspaces · alt-shift-1..8 send window there
+# alt-m fullscreen · alt-t tiles/accordion · alt-shift-f float · alt-shift-; service mode (esc reloads)
+# alt-shift-tab moves the current workspace to the other monitor (dev mode: terminals on the portrait screen)
+config-version = 2
+start-at-login = true
+auto-reload-config = true
+
+# Thin Catppuccin border on the focused window (JankyBorders)
+after-startup-command = [
+  'exec-and-forget borders active_color=0xffcba6f7 inactive_color=0xff313244 width=3.0',
+]
+
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+accordion-padding = 0
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+automatically-unhide-macos-hidden-apps = true
+key-mapping.preset = 'qwerty'
+focus-follows-mouse.enabled = false
+
+# 1 term · 2 code · 3 web · 4 ai · 5 chat · 6 mail · 7 office · 8 music
+persistent-workspaces = ['1', '2', '3', '4', '5', '6', '7', '8']
+
+
+# Every pixel: no gaps
+gaps.inner.horizontal = 0
+gaps.inner.vertical   = 0
+gaps.outer.left       = 0
+gaps.outer.bottom     = 0
+gaps.outer.top        = 0
+gaps.outer.right      = 0
+
+# Monitors: main Dell landscape (left), secondary Dell portrait (right).
+# Communication and calendar live on the portrait screen. Its orientation is
+# 'auto', so windows stack vertically there.
+# Dev mode: focus workspace 1 and press alt-shift-tab to move the terminals to
+# the portrait screen; press it again to bring them back.
+[workspace-to-monitor-force-assignment]
+1 = 'main'
+2 = 'main'
+3 = 'main'
+4 = 'main'
+5 = ['secondary', 'main']   # chat: Teams, Slack, WhatsApp
+6 = ['secondary', 'main']   # mail & calendar: Outlook
+7 = 'main'
+8 = 'main'
+
+# ---------------------------------------------------------------------------
+# App → workspace
+# ---------------------------------------------------------------------------
+[[on-window-detected]]
+if = 'test %{app-bundle-id} = com.mitchellh.ghostty'
+run = 'move-node-to-workspace 1'
+
+[[on-window-detected]]
+if = 'test %{app-bundle-id} = com.todesktop.230313mzl4w4u92'   # Cursor
+run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if = 'test %{app-bundle-id} = com.google.Chrome'
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+if = 'test %{app-bundle-id} = com.anthropic.claudefordesktop'
+run = 'move-node-to-workspace 4'
+
+[[on-window-detected]]
+if = 'test %{app-bundle-id} = com.openai.codex'
+run = 'move-node-to-workspace 4'
+
+[[on-window-detected]]
+if = 'test %{app-bundle-id} = com.microsoft.teams2'
+run = 'move-node-to-workspace 5'
+
+[[on-window-detected]]
+if = 'test %{app-bundle-id} = net.whatsapp.WhatsApp'
+run = 'move-node-to-workspace 5'
+
+[[on-window-detected]]
+if = 'test %{app-bundle-id} = com.tinyspeck.slackmacgap'
+run = 'move-node-to-workspace 5'
+
+[[on-window-detected]]
+if = 'test %{app-bundle-id} = com.microsoft.Outlook'
+run = 'move-node-to-workspace 6'
+
+[[on-window-detected]]
+if = 'test %{app-bundle-id} = com.microsoft.Excel'
+run = 'move-node-to-workspace 7'
+
+[[on-window-detected]]
+if = 'test %{app-bundle-id} = com.microsoft.Powerpoint'
+run = 'move-node-to-workspace 7'
+
+[[on-window-detected]]
+if = 'test %{app-bundle-id} = com.microsoft.Word'
+run = 'move-node-to-workspace 7'
+
+[[on-window-detected]]
+if = 'test %{app-bundle-id} = com.spotify.client'
+run = 'move-node-to-workspace 8'
+
+# Utility windows float
+[[on-window-detected]]
+if = 'test %{app-bundle-id} = com.apple.systempreferences'
+run = 'layout floating'
+
+[[on-window-detected]]
+if = 'test %{app-bundle-id} = com.apple.finder'
+run = 'layout floating'
+
+[[on-window-detected]]
+if = 'test %{app-bundle-id} = com.raycast.macos'
+run = 'layout floating'
+
+# ---------------------------------------------------------------------------
+# Keys. Chosen to avoid readline's alt-b / alt-f / alt-d in the terminal.
+# ---------------------------------------------------------------------------
+[mode.main.binding]
+    alt-enter = 'exec-and-forget /Applications/Ghostty.app/Contents/MacOS/ghostty +new-window'
+
+    alt-h = 'focus left'
+    alt-j = 'focus down'
+    alt-k = 'focus up'
+    alt-l = 'focus right'
+
+    alt-shift-h = 'move left'
+    alt-shift-j = 'move down'
+    alt-shift-k = 'move up'
+    alt-shift-l = 'move right'
+
+    alt-minus = 'resize smart -50'
+    alt-equal = 'resize smart +50'
+
+    alt-m = 'fullscreen'
+    alt-t = 'layout tiles accordion'
+    alt-shift-t = 'layout horizontal vertical'
+    alt-shift-f = 'layout floating tiling'
+    alt-shift-w = 'close'
+
+    alt-1 = 'workspace 1'
+    alt-2 = 'workspace 2'
+    alt-3 = 'workspace 3'
+    alt-4 = 'workspace 4'
+    alt-5 = 'workspace 5'
+    alt-6 = 'workspace 6'
+    alt-7 = 'workspace 7'
+    alt-8 = 'workspace 8'
+
+    alt-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
+    alt-shift-2 = ['move-node-to-workspace 2', 'workspace 2']
+    alt-shift-3 = ['move-node-to-workspace 3', 'workspace 3']
+    alt-shift-4 = ['move-node-to-workspace 4', 'workspace 4']
+    alt-shift-5 = ['move-node-to-workspace 5', 'workspace 5']
+    alt-shift-6 = ['move-node-to-workspace 6', 'workspace 6']
+    alt-shift-7 = ['move-node-to-workspace 7', 'workspace 7']
+    alt-shift-8 = ['move-node-to-workspace 8', 'workspace 8']
+
+    alt-tab = 'workspace-back-and-forth'
+    alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+
+    alt-shift-semicolon = 'mode service'
+
+[mode.service.binding]
+    esc = ['reload-config', 'mode main']
+    r = ['flatten-workspace-tree', 'mode main']     # reset layout
+    f = ['layout floating tiling', 'mode main']
+    backspace = ['close-all-windows-but-current', 'mode main']
+    alt-shift-h = ['join-with left', 'mode main']
+    alt-shift-j = ['join-with down', 'mode main']
+    alt-shift-k = ['join-with up', 'mode main']
+    alt-shift-l = ['join-with right', 'mode main']

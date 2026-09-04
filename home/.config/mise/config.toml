@@ -1,0 +1,11 @@
+# Global toolchains. Projects override with their own .mise.toml / .nvmrc / .python-version.
+[tools]
+node = "lts"
+python = "3.13"
+uv = "latest"
+"npm:pnpm" = "latest"
+"npm:typescript" = "latest"
+
+[settings]
+experimental = true
+idiomatic_version_file_enable_tools = ["node", "python"]   # honour .nvmrc and .python-version

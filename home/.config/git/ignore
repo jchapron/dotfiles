@@ -1,0 +1,19 @@
+# Global gitignore — machine/editor noise only. Project-specific ignores belong in each repo.
+.DS_Store
+._*
+Thumbs.db
+*.swp
+*.swo
+*~
+.env.local
+.env.*.local
+.envrc
+.direnv/
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.cursor/
+.claude/settings.local.json
+.mise.local.toml
+node_modules/.cache/

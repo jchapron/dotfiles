@@ -1,0 +1,11 @@
+{
+  "default_program": "claude",
+  "auto_yes": false,
+  "daemon_poll_interval": 1000,
+  "branch_prefix": "jc/",
+  "profiles": [
+    { "name": "claude", "program": "claude" },
+    { "name": "claude-auto", "program": "claude --permission-mode acceptEdits" },
+    { "name": "cursor", "program": "agent" }
+  ]
+}

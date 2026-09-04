@@ -1,0 +1,40 @@
+# Ghostty — minimal, Catppuccin Mocha
+# Reload with cmd+shift+, ; docs: ghostty +show-config --default --docs
+
+# Theme: follows macOS appearance
+theme = light:Catppuccin Latte,dark:Catppuccin Mocha
+
+# Font
+font-family = GeistMono Nerd Font Mono
+font-size = 14
+font-thicken = true
+
+# Window
+macos-titlebar-style = tabs
+window-padding-x = 12
+window-padding-y = 12
+window-padding-balance = true
+window-save-state = always
+background-opacity = 0.97
+background-blur = 20
+
+# Cursor
+cursor-style = block
+cursor-style-blink = false
+mouse-hide-while-typing = true
+
+# Behaviour
+shell-integration = zsh
+shell-integration-features = cursor,sudo,title
+copy-on-select = clipboard
+macos-option-as-alt = true
+confirm-close-surface = false
+quit-after-last-window-closed = false
+
+# Keybinds
+keybind = super+d=new_split:right
+keybind = super+shift+d=new_split:down
+keybind = super+alt+left=goto_split:left
+keybind = super+alt+right=goto_split:right
+keybind = super+alt+up=goto_split:up
+keybind = super+alt+down=goto_split:down
