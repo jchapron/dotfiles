@@ -3,3 +3,4 @@ home/.zsh/ssh.zsh
 home/.zsh/local.zsh
 home/.config/nvim/.luarc.json
 .DS_Store
+home/.config/karabiner/automatic_backups/
